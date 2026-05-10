@@ -1,28 +1,28 @@
-name: CI/CD Pipeline
+ame: CI/CD Pipeline2
 
 
 on:
   push:
-    branches:[ main ]
-  pull-request:
-    branches:[ main ]
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
   build-test-deploy:
-    runs-on:  ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
     - name: Checkout du code
-    - uses: actions/checkout@v3
-   
+      uses: actions/checkout@v3
+
     - name: Installer Python
-    - uses: actions/setup-python@v4
-    with:
-      python-version:  '3.9'
-    
+      uses: actions/setup-python@v4
+      with:
+        python-version:  '3.9'
+
    - name: Installer les dependances
      run: |
        python -m pip install --upgrade pip
-       pip install -r requirement.txt
+       pip install -r requirements.txt
        pip install pytest
 
    - name: Lancer les tests
@@ -35,5 +35,6 @@ jobs:
 
    - name: Déploiement (simulation)
      run: |
-       echo "Deploiement simulé de l'app version ${{ github.sha}}"
+       echo "Deploiement simulé de l'app version ${{ github.sha }}"
+
 
