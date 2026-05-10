@@ -45,5 +45,5 @@ jobs:
 
     - name: Push image Docker
       run: |
-        docker tag mon-app:${{ github.sha }} monutilisateur/mon-app:latest
-        docker push monutilisateur/mon-app:latest 
+        docker tag mon-app:${{ github.sha }} ${{ secrets.DOCKER_USERNAME }}/mon-app:latest
+        docker push ${{ secrets.DOCKER_USERNAME }}/mon-app:latest
