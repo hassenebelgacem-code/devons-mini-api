@@ -36,5 +36,15 @@ jobs:
     - name: Déploiement (simulation)
       run: |
         echo "Deploiement simulé de l'app version ${{ github.sha }}"
+    
+    - name: Login Docker Hub
+      uses: docker/login-action@v2
+      with:
+        username: ${{ secret.DOCKER_USERNAME }}
+        password: ${{ secret.DOCKER_PASSWORD }}
 
-
+    - name: Push image Docker
+      run: |
+        docker tag mon-app:${{ github.sha }}
+    monutilisateur/mon-app:latest
+        docker push monutilisateur/mon-app:latest 
